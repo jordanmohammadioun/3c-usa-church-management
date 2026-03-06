@@ -1,4 +1,3 @@
-1"}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +7,15 @@
 <style>
 
 body{
-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-background:#f3f6fb;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 margin:0;
+background:#f2f5fb;
 }
 
 .header{
 background:linear-gradient(135deg,#1e4fa3,#3b82f6);
 color:white;
-padding:20px;
+padding:18px;
 text-align:center;
 font-weight:600;
 font-size:20px;
@@ -24,6 +23,7 @@ font-size:20px;
 
 .container{
 padding:16px;
+padding-bottom:90px;
 }
 
 .grid{
@@ -34,9 +34,9 @@ gap:12px;
 
 .card{
 background:white;
-border-radius:12px;
+border-radius:14px;
 padding:16px;
-box-shadow:0 5px 12px rgba(0,0,0,0.08);
+box-shadow:0 6px 14px rgba(0,0,0,0.08);
 }
 
 .title{
@@ -45,17 +45,17 @@ color:#6b7280;
 }
 
 .number{
-font-size:28px;
+font-size:26px;
 font-weight:700;
 margin-top:6px;
 }
 
-.graph{
+.list{
 background:white;
 border-radius:12px;
-padding:16px;
-margin-top:16px;
-box-shadow:0 5px 12px rgba(0,0,0,0.08);
+padding:14px;
+margin-bottom:10px;
+box-shadow:0 5px 12px rgba(0,0,0,0.07);
 }
 
 .bottomnav{
@@ -66,16 +66,40 @@ background:white;
 display:flex;
 justify-content:space-around;
 padding:12px 0;
-box-shadow:0 -3px 10px rgba(0,0,0,0.1);
+box-shadow:0 -3px 12px rgba(0,0,0,0.1);
 }
 
 .bottomnav div{
 font-size:12px;
 text-align:center;
-color:#4b5563;
+cursor:pointer;
+color:#374151;
+}
+
+.page{
+display:none;
+}
+
+.active{
+display:block;
 }
 
 </style>
+
+<script>
+
+function openPage(page){
+
+let pages=document.querySelectorAll(".page");
+
+pages.forEach(p=>p.classList.remove("active"));
+
+document.getElementById(page).classList.add("active");
+
+}
+
+</script>
+
 </head>
 
 <body>
@@ -85,6 +109,10 @@ color:#4b5563;
 </div>
 
 <div class="container">
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="page active">
 
 <div class="grid">
 
@@ -120,19 +148,115 @@ color:#4b5563;
 
 </div>
 
-<div class="graph">
-Attendance Graph Coming Here
+<div class="list">
+Attendance Graph (Demo)
+</div>
+
+</div>
+
+<!-- PEOPLE -->
+
+<div id="people" class="page">
+
+<div class="list">
+Michael Johnson<br>
+Visitor<br>
+410-555-1234
+</div>
+
+<div class="list">
+Sarah Brown<br>
+Convert<br>
+302-555-4455
+</div>
+
+<div class="list">
+David Smith<br>
+Member<br>
+410-555-9988
+</div>
+
+</div>
+
+<!-- CELLS -->
+
+<div id="cells" class="page">
+
+<div class="list">
+Wayne & Emily Stone<br>
+Dorchester Campus
+</div>
+
+<div class="list">
+Justin & Jessica Rittenhouse<br>
+Dulles Campus
+</div>
+
+<div class="list">
+Greg & Mindy Wynne<br>
+Dover Campus
+</div>
+
+<div class="list">
+Jordan & Michaela Mohammadioun<br>
+UMES Campus
+</div>
+
+</div>
+
+<!-- EVENTS -->
+
+<div id="events" class="page">
+
+<div class="list">
+Sunday Service<br>
+Attendance: 214
+</div>
+
+<div class="list">
+Dorchester Outreach<br>
+Visitors: 45
+</div>
+
+<div class="list">
+Men's Night<br>
+Attendance: 60
+</div>
+
+</div>
+
+<!-- TASKS -->
+
+<div id="tasks" class="page">
+
+<div class="list">
+Call Michael Johnson<br>
+Visitor Follow Up
+</div>
+
+<div class="list">
+Assign Sarah Brown to Cell<br>
+New Convert
+</div>
+
+<div class="list">
+Visit David Smith<br>
+Member Care
+</div>
+
 </div>
 
 </div>
 
 <div class="bottomnav">
-<div>Dashboard</div>
-<div>Cells</div>
-<div>People</div>
-<div>Events</div>
-<div>Tasks</div>
+
+<div onclick="openPage('dashboard')">Dashboard</div>
+<div onclick="openPage('cells')">Cells</div>
+<div onclick="openPage('people')">People</div>
+<div onclick="openPage('events')">Events</div>
+<div onclick="openPage('tasks')">Tasks</div>
+
 </div>
 
 </body>
-</ht
+</html>
