@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>3C USA Church Management</title>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
@@ -13,13 +15,18 @@ margin:0;
 background:#f4f6fb;
 }
 
-header{
-background:#1f4e78;
+.header{
+background:linear-gradient(135deg,#1f4e78,#2f7cc1);
 color:white;
-padding:16px;
-font-size:18px;
-font-weight:600;
+padding:20px;
 text-align:center;
+}
+
+.header img{
+height:50px;
+display:block;
+margin:auto;
+margin-bottom:5px;
 }
 
 .container{
@@ -28,33 +35,47 @@ padding:15px;
 
 .cards{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
+grid-template-columns:1fr 1fr 1fr;
+gap:10px;
 }
 
 .card{
-background:white;
-padding:14px;
+color:white;
+padding:15px;
 border-radius:12px;
-box-shadow:0 3px 8px rgba(0,0,0,0.08);
+font-weight:600;
 }
 
-.card h4{
-margin:0;
-font-size:13px;
-color:#666;
-}
+.blue{background:linear-gradient(135deg,#2f7cc1,#5aa2e3);}
+.green{background:linear-gradient(135deg,#28a745,#5dd37c);}
+.orange{background:linear-gradient(135deg,#f39c12,#ffbe55);}
+.purple{background:linear-gradient(135deg,#6f42c1,#9a6de0);}
 
-.card h2{
-margin:5px 0 0 0;
+.card small{
+display:block;
+font-weight:400;
 }
 
 .section{
 background:white;
-margin-top:16px;
+margin-top:15px;
 padding:15px;
 border-radius:12px;
 box-shadow:0 3px 8px rgba(0,0,0,0.08);
+}
+
+.leader{
+display:flex;
+justify-content:space-between;
+padding:8px 0;
+border-bottom:1px solid #eee;
+}
+
+.alert{
+background:#fff3cd;
+padding:10px;
+border-radius:8px;
+margin-top:10px;
 }
 
 nav{
@@ -67,78 +88,101 @@ border-top:1px solid #ddd;
 display:flex;
 justify-content:space-around;
 padding:10px 0;
-font-size:14px;
-}
-
-nav div{
-text-align:center;
-}
-
-.alert{
-background:#fff3cd;
-padding:10px;
-border-radius:8px;
-margin-top:10px;
+font-size:13px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
-3C USA Church Management
-</header>
+<div class="header">
+
+<img src="logo.png">
+
+3C USA CHURCH MANAGEMENT
+
+</div>
 
 <div class="container">
 
+<h2>Church Overview</h2>
+
 <div class="cards">
 
-<div class="card">
-<h4>Service Attendance</h4>
-<h2>214</h2>
+<div class="card blue">
+<small>Service Attendance</small>
+214
 </div>
 
-<div class="card">
-<h4>Cell Attendance</h4>
-<h2>118</h2>
+<div class="card blue">
+<small>Cell Attendance</small>
+118
 </div>
 
-<div class="card">
-<h4>Visitors</h4>
-<h2>19</h2>
+<div class="card blue">
+<small>Visitors</small>
+19
 </div>
 
-<div class="card">
-<h4>Salvations</h4>
-<h2>6</h2>
+<div class="card purple">
+<small>Salvations</small>
+6
 </div>
 
-<div class="card">
-<h4>Tasks Completed</h4>
-<h2>43</h2>
+<div class="card green">
+<small>Tasks Completed</small>
+43
 </div>
 
-<div class="card">
-<h4>Active Cells</h4>
-<h2>18</h2>
+<div class="card orange">
+<small>Active Cells</small>
+18
 </div>
 
 </div>
 
 <div class="section">
+
 <h3>Attendance & Care Activity</h3>
+
 <canvas id="mainChart"></canvas>
+
 </div>
 
 <div class="section">
-<h3>Leader Activity</h3>
 
-<p>Mike Davis — 14 Calls / 6 Visits</p>
-<p>Sarah Lopez — 11 Calls / 8 Visits</p>
+<h3>Cell Growth</h3>
+
+<canvas id="cellChart"></canvas>
+
+</div>
+
+<div class="section">
+
+<h3>Top Active Leaders</h3>
+
+<div class="leader">
+Mike Davis
+<span>14 Calls</span>
+</div>
+
+<div class="leader">
+Sarah Lopez
+<span>11 Calls</span>
+</div>
+
+</div>
+
+<div class="section">
+
+<h3>Alerts</h3>
 
 <div class="alert">
-Visitors needing follow-up: Michael Johnson
+Cells That Haven't Reported<br>
+Men Cell 4<br>
+Youth Cell 2
 </div>
 
 </div>
@@ -146,45 +190,61 @@ Visitors needing follow-up: Michael Johnson
 </div>
 
 <nav>
+
 <div>🏠<br>Dashboard</div>
 <div>👥<br>Cells</div>
 <div>📅<br>Events</div>
 <div>📞<br>Tasks</div>
 <div>📊<br>Reports</div>
+
 </nav>
 
 <script>
 
-new Chart(document.getElementById("mainChart"), {
-type: "line",
-data: {
-labels: ["Week 1","Week 2","Week 3","Week 4"],
-datasets: [
+new Chart(document.getElementById("mainChart"),{
+
+type:"line",
+
+data:{
+labels:["Feb 1","Feb 15","Mar 1","Mar 15","Apr 1","Apr 15"],
+
+datasets:[
+
 {
-label: "Service Attendance",
-data: [200,210,220,214],
-borderWidth: 3
+label:"Service Attendance",
+data:[120,160,190,175,225,280],
+borderWidth:3
 },
+
 {
-label: "Cell Attendance",
-data: [100,110,115,118],
-borderWidth: 3
+label:"Cell Attendance",
+data:[95,102,118,110,150,220],
+borderWidth:3
 },
+
 {
-label: "Tasks",
-data: [30,35,40,43],
-borderWidth: 3
+label:"Tasks Completed",
+data:[34,41,37,44,49,63],
+borderWidth:3
 }
+
 ]
-},
-options:{
-responsive:true,
-plugins:{
-legend:{
-position:'bottom'
 }
+
+});
+
+new Chart(document.getElementById("cellChart"),{
+
+type:"bar",
+
+data:{
+labels:["Jan","Feb","Mar","Apr"],
+datasets:[{
+label:"Cells",
+data:[12,13,14,18]
+}]
 }
-}
+
 });
 
 </script>
