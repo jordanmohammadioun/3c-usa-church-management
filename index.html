@@ -1,28 +1,193 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>3C USA Church Management</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3C USA Church Management</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+margin:0;
+background:#f4f6fb;
+}
+
+header{
+background:#1f4e78;
+color:white;
+padding:16px;
+font-size:18px;
+font-weight:600;
+text-align:center;
+}
+
+.container{
+padding:15px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.card{
+background:white;
+padding:14px;
+border-radius:12px;
+box-shadow:0 3px 8px rgba(0,0,0,0.08);
+}
+
+.card h4{
+margin:0;
+font-size:13px;
+color:#666;
+}
+
+.card h2{
+margin:5px 0 0 0;
+}
+
+.section{
+background:white;
+margin-top:16px;
+padding:15px;
+border-radius:12px;
+box-shadow:0 3px 8px rgba(0,0,0,0.08);
+}
+
+nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:white;
+border-top:1px solid #ddd;
+display:flex;
+justify-content:space-around;
+padding:10px 0;
+font-size:14px;
+}
+
+nav div{
+text-align:center;
+}
+
+.alert{
+background:#fff3cd;
+padding:10px;
+border-radius:8px;
+margin-top:10px;
+}
+
+</style>
 </head>
 
-<body style="font-family:Arial;background:#f5f7fb;margin:0">
+<body>
 
-<div style="background:#1f4e78;color:white;padding:15px;text-align:center">
+<header>
 3C USA Church Management
+</header>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h4>Service Attendance</h4>
+<h2>214</h2>
 </div>
 
-<div style="padding:20px">
+<div class="card">
+<h4>Cell Attendance</h4>
+<h2>118</h2>
+</div>
 
-<h2>Church Overview</h2>
+<div class="card">
+<h4>Visitors</h4>
+<h2>19</h2>
+</div>
 
-<p>Service Attendance: 214</p>
-<p>Cell Attendance: 118</p>
-<p>Visitors: 19</p>
-<p>Salvations: 6</p>
-<p>Tasks Completed: 43</p>
-<p>Active Cells: 18</p>
+<div class="card">
+<h4>Salvations</h4>
+<h2>6</h2>
+</div>
+
+<div class="card">
+<h4>Tasks Completed</h4>
+<h2>43</h2>
+</div>
+
+<div class="card">
+<h4>Active Cells</h4>
+<h2>18</h2>
+</div>
 
 </div>
+
+<div class="section">
+<h3>Attendance & Care Activity</h3>
+<canvas id="mainChart"></canvas>
+</div>
+
+<div class="section">
+<h3>Leader Activity</h3>
+
+<p>Mike Davis — 14 Calls / 6 Visits</p>
+<p>Sarah Lopez — 11 Calls / 8 Visits</p>
+
+<div class="alert">
+Visitors needing follow-up: Michael Johnson
+</div>
+
+</div>
+
+</div>
+
+<nav>
+<div>🏠<br>Dashboard</div>
+<div>👥<br>Cells</div>
+<div>📅<br>Events</div>
+<div>📞<br>Tasks</div>
+<div>📊<br>Reports</div>
+</nav>
+
+<script>
+
+new Chart(document.getElementById("mainChart"), {
+type: "line",
+data: {
+labels: ["Week 1","Week 2","Week 3","Week 4"],
+datasets: [
+{
+label: "Service Attendance",
+data: [200,210,220,214],
+borderWidth: 3
+},
+{
+label: "Cell Attendance",
+data: [100,110,115,118],
+borderWidth: 3
+},
+{
+label: "Tasks",
+data: [30,35,40,43],
+borderWidth: 3
+}
+]
+},
+options:{
+responsive:true,
+plugins:{
+legend:{
+position:'bottom'
+}
+}
+}
+});
+
+</script>
 
 </body>
 </html>
